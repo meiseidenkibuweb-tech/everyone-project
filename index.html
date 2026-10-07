@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>金イクラカウンター v2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>金イクラカウンター v2</h1>
+
+    <section class="meta">
+      <div class="field">
+        <label for="shiftName">シフト名 / 時間メモ</label>
+        <input id="shiftName" type="text" placeholder="例：12/08 21:00 バイト">
+      </div>
+      <div class="field">
+        <label for="stageName">ステージ名</label>
+        <input id="stageName" type="text" placeholder="例：ドン・ブラコ">
+      </div>
+    </section>
+
+    <section class="waves">
+      <h2>Waveごとの金イクラ</h2>
+
+      <div class="wave-row">
+        <label class="wave-label" for="wave1Input">WAVE 1</label>
+        <input
+          id="wave1Input"
+          type="number"
+          min="0"
+          max="500"
+          step="1"
+          inputmode="numeric"
+          class="wave-input"
+        >
+      </div>
+
+      <div class="wave-row">
+        <label class="wave-label" for="wave2Input">WAVE 2</label>
+        <input
+          id="wave2Input"
+          type="number"
+          min="0"
+          max="500"
+          step="1"
+          inputmode="numeric"
+          class="wave-input"
+        >
+      </div>
+
+      <div class="wave-row">
+        <label class="wave-label" for="wave3Input">WAVE 3</label>
+        <input
+          id="wave3Input"
+          type="number"
+          min="0"
+          max="500"
+          step="1"
+          inputmode="numeric"
+          class="wave-input"
+        >
+      </div>
+    </section>
+
+    <section class="total">
+      <h2>合計</h2>
+
+      <div class="total-row">
+        <div class="total-label">自動計算 合計</div>
+        <div class="total-value" id="autoTotal">0</div>
+      </div>
+
+      <div class="total-row total-manual">
+        <label for="manualTotalInput" class="total-label">
+          合計のみ入力（任意・0〜500）
+        </label>
+        <input
+          id="manualTotalInput"
+          type="number"
+          min="0"
+          max="500"
+          step="1"
+          inputmode="numeric"
+          class="manual-input"
+        >
+      </div>
+
+      <p class="help-text">
+        ・WAVE1〜3 はそれぞれ 0〜500 の整数<br>
+        ・合計は最大 500<br>
+        ・自動計算と合計のみ入力の両方に値がある場合は、一致している必要があります
+      </p>
+
+      <p id="errorMessage" class="error-message" aria-live="polite"></p>
+    </section>
+
+    <section class="save">
+      <h2>シフト記録</h2>
+      <button id="saveShift" class="btn primary">このシフトを保存</button>
+      <p class="note">
+        ※全部0（WAVE1〜3、合計のみ入力が全て0/空）は保存できません。<br>
+        ※データはこの端末のブラウザ内（localStorage）に保存されます。
+      </p>
+    </section>
+
+    <section class="history">
+      <h2>保存したシフト一覧</h2>
+      <div id="historyList" class="history-list"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
